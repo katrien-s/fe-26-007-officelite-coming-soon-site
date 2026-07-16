@@ -55,10 +55,12 @@
 	--text-dark: hsl(var(--clr-neutral-900));
 	--text-muted: hsl(var(--clr-neutral-500));
 	--text-on-dark: hsl(var(--clr-neutral-0));
+	--text-accent: hsl(var(--clr-blue-500));
 	--heading: hsl(var(--clr-neutral-800));
 
 	--bg: hsl(var(--clr-neutral-0));
 	--bg-dark: hsl(var(--clr-blue-500));
+	--bg-muted: hsl(var(--clr-neutral-800));
 
 	--footer-bg: hsl(var(--clr-neutral-900));
 	--footer-text: hsl(var(--clr-neutral-0));
@@ -209,9 +211,13 @@ h6 {
 	font-weight: var(--fw-400);
 }
 
+button {
+	line-height: 1;
+	letter-spacing: 2%;
+}
+
 input,
 label,
-button,
 h1,
 h2,
 h3,
@@ -494,7 +500,48 @@ header {
 
 footer {
 	margin-block-start: var(--spacing-80);
-	padding-inline: var(--spacing-16);
 	background-color: var(--footer-bg);
 	color: var(--footer-text);
+  
+	& .footer-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+    padding-block-end: var(--spacing-112);
+
+
+		& .launch-date {
+			font: var(--text-preset-5);
+			text-transform: uppercase;
+			letter-spacing: 5%;
+			margin-block-start: var(--spacing-96);
+			margin-block-end: var(--spacing-24);
+
+			& span {
+				color: var(--text-accent);
+			}
+		}
+
+		& .countdown {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: var(--spacing-16);
+			margin-block-end: var(--spacing-48);
+
+			& p {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+        background-color: var(--bg-muted);
+        padding: var(--spacing-16) var(--spacing-12);
+        border-radius: var(--radius-12);
+        font: var(--text-preset-1);
+
+        & span {
+          font: var(--text-preset-5);
+          opacity: 0.5;
+        }
+			}
+		}
+	}
 }
