@@ -60,6 +60,8 @@
 
 	--bg: hsl(var(--clr-neutral-0));
 	--bg-dark: hsl(var(--clr-blue-500));
+	--bg-select-hover: hsl(var(--clr-blue-300) / 20%);
+	--bg-select-checked: hsl(var(--clr-blue-300) / 30%);
 	--bg-muted: hsl(var(--clr-neutral-800));
 
 	--footer-bg: hsl(var(--clr-neutral-900));
@@ -169,6 +171,7 @@ button,
 textarea,
 select {
 	font: inherit;
+	color: inherit;
 }
 
 textarea {
@@ -346,7 +349,7 @@ h2,
 /* Components        */
 /* ----------------  */
 
-button {
+.button {
 	cursor: pointer;
 	display: block;
 	background-color: var(--btn-primary-bg);
@@ -404,6 +407,7 @@ button {
 	flex-direction: column;
 	gap: var(--spacing-24);
 	padding: var(--spacing-40) var(--spacing-20);
+	color: var(--text);
 
 	& .form-control {
 		padding: var(--spacing-16);
@@ -418,7 +422,7 @@ button {
 		color: var(--text);
 	}
 
-	& :focus {
+	& :focus:not(.custom-select, .custom-select *) {
 		outline: 1px solid currentColor;
 		outline-offset: 0.25lh;
 	}
@@ -429,6 +433,19 @@ button {
 .custom-select::picker(select) {
 	appearance: base-select;
 	background-color: var(--bg);
+	border-radius: 0;
+	border: none;
+	position-area: block-end span-inline-end;
+
+	&::picker-icon {
+		color: hsl(var(--clr-blue-500));
+		transition: 0.4s rotate;
+		content: url(./assets/sign-up/icon-arrow-down.svg);
+	}
+
+	&:open::picker-icon {
+		rotate: 180deg;
+	}
 
 	& option {
 		font: var(--text-preset-5);
@@ -436,8 +453,15 @@ button {
 		& span {
 			opacity: 0.4;
 		}
-
+		&:hover,
+		&:focus {
+			background-color: var(--bg-select-hover);
+		}
 		&:checked {
+			background-color: var(--bg-select-checked);
+		}
+		&::checkmark {
+			display: none;
 		}
 	}
 }
@@ -486,7 +510,7 @@ header {
 			color: var(--text);
 		}
 
-		& button {
+		& .button {
 			box-shadow: 0 25px 25px hsla(227, 52%, 50%, 0.24);
 		}
 	}
@@ -574,7 +598,7 @@ header {
 			justify-content: center;
 		}
 
-		& button {
+		& .button {
 			max-width: fit-content;
 		}
 	}
@@ -588,7 +612,7 @@ header {
 			align-items: center;
 		}
 
-		& button {
+		& .button {
 			margin-inline: auto;
 		}
 	}

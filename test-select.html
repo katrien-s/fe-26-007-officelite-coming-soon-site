@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			select,
+			select::picker(select) {
+				appearance: base-select;
+			}
+		</style>
+	</head>
+	<body>
+		<select
+			class="form-control custom-select"
+			name="pack-select"
+			id="pack-select"
+		>
+			<button><selectedcontent></selectedcontent></button>
+
+			<option value="basic" selected>Basic Pack <span>Free</span></option>
+			<option value="pro">Pro Pack <span>$9.99</span></option>
+			<option value="ultimate">Ultimate Pack <span>$19.99</span></option>
+		</select>
+	</body>
+</html>
