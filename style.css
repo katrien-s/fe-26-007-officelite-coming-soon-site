@@ -56,13 +56,15 @@
 	--text-muted: hsl(var(--clr-neutral-500));
 	--text-on-dark: hsl(var(--clr-neutral-0));
 	--text-accent: hsl(var(--clr-blue-500));
-	--heading: hsl(var(--clr-neutral-800));
+	--text-strong: hsl(var(--clr-neutral-800));
 
 	--bg: hsl(var(--clr-neutral-0));
 	--bg-dark: hsl(var(--clr-blue-500));
 	--bg-select-hover: hsl(var(--clr-blue-300) / 20%);
 	--bg-select-checked: hsl(var(--clr-blue-300) / 30%);
 	--bg-muted: hsl(var(--clr-neutral-800));
+  --bg-blue: hsl(var(var(--clr-blue-300)));
+  --bg-blue-muted: hsl(var(--clr-blue-100));
 
 	--footer-bg: hsl(var(--clr-neutral-900));
 	--footer-text: hsl(var(--clr-neutral-0));
@@ -196,7 +198,7 @@ h6 {
 h1,
 h2,
 h3 {
-	color: var(--heading);
+	color: var(--text-strong);
 	text-wrap: balance;
 }
 
@@ -469,6 +471,34 @@ h2,
 /* ----------------  */
 /* Page Specific     */
 /* ----------------  */
+
+.sign-up-hero-section {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-24);
+}
+
+.sign-up-section {
+	margin-block-start: var(--spacing-40);
+
+	& .launch-date {
+		margin-block-start: unset;
+		color: var(--text-strong);
+		text-align: center;
+	}
+
+  & .countdown {
+    & p {
+      background-color: var(--bg-blue-muted);
+      color: var(--text-accent);
+
+      & span {
+        color: var(--text-strong);
+      }
+    }
+  }
+}
 
 /* ----------------  */
 /* Layout            */
