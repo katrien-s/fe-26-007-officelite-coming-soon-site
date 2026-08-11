@@ -410,6 +410,7 @@ header {
 
 	& .logo {
 		margin-inline: auto;
+		/* staat het logo eignelijk wel goed? is de wrapper correct op tablet-size */
 
 		@media (min-width: 35em) {
 			margin-inline: 0;
@@ -421,14 +422,12 @@ header {
 	margin-block-start: var(--spacing-80);
 }
 
-/* dit is de layout voor index */
-/* wat is het verschil met sign-up */
 .date-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-block-end: var(--spacing-112);
 
+	/* date-content is anders op home dan op sign-up owille van de extra div */
 	@media (min-width: 60rem) {
 		flex-direction: row;
 		align-items: center;
@@ -485,34 +484,31 @@ header {
 }
 
 /* is deze margin-blovk voor sign-up?
-waarde geldt niet voor index. */ 
+waarde geldt niet voor index. */
 @media (min-width: 45em) {
-	.launch-date {
-		margin-block-end: var(--spacing-16);
-	}
-
 	.countdown {
 		margin-block-end: unset;
 	}
 }
 
+.launch-date {
+	text-align: center;
+	margin-block-end: var(--spacing-20);
+
+	@media (min-width: 53em) {
+		text-align: left;
+		margin-block-end: var(--spacing-12);
+	}
+}
+
 footer {
+	position: relative;
+	z-index: -5;
+	background-image: url(./assets/home/bg-pattern-footer.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
 	background-color: var(--footer-bg);
 	color: var(--footer-text);
-	position: relative;
-	margin-block-start: -50rem;
-	padding-block-start: 55rem;
-	z-index: -5;
-
-	@media (min-width: 48rem) {
-		margin-block-start: -30rem;
-		padding-block-start: 36rem;
-	}
-
-	@media (min-width: 60rem) {
-		margin-block-start: -14.5rem;
-		padding-block-start: 19.5rem;
-	}
 }
 
 /* ----------------  */
@@ -654,30 +650,26 @@ footer {
 
 .home {
 	& footer {
-		background-image: url(./assets/home/bg-pattern-footer.svg);
-		background-size: cover;
-		background-repeat: no-repeat;
+		margin-block-start: -50rem;
+		padding-block-start: 55rem;
+		/* ik weet niet of deze hier nog hoort. even opniuew nakijken */
+		padding-block-end: var(--spacing-112);
 
+		/* 48 */
 		@media (min-width: 35em) {
-			background-size: 1454px;
 			background-position-x: center;
 			background-position-y: 5%;
+			margin-block-start: -30rem;
+			padding-block-start: 36rem;
 		}
 
+		/* 60 */
 		@media (min-width: 53em) {
 			background-size: 2036px;
 			background-position-x: 100%;
 			background-position-y: 40%;
-		}
-
-		& .launch-date {
-			text-align: center;
-      margin-block-end: var(--spacing-20);
-
-			@media (min-width: 53em) {
-				text-align: left;
-        margin-block-end: var(--spacing-12);
-			}
+			margin-block-start: -14.5rem;
+			padding-block-start: 19.5rem;
 		}
 
 		& .button {
@@ -692,13 +684,22 @@ footer {
 
 /* .sign-up-hero-section, .sign-up-section, .sign-up-form, .sign-up-complete, .custom-select */
 
+body.sign-up {
+	position: relative;
+
+	@media (min-width: 60rem) {
+		display: grid;
+		grid-template-rows: auto 1fr;
+	}
+}
+
 .sign-up-form {
 	background-color: var(--bg);
 	border-radius: var(--radius-12);
 	display: flex;
 	flex-direction: column;
 	gap: var(--spacing-24);
-	margin-block-start: var(--spacing-80);
+	/* margin-block-start: var(--spacing-80); */
 	padding: var(--spacing-40) var(--spacing-20);
 	color: var(--text);
 	box-shadow: 0px 50px 50px -25px hsl(var(--clr-neutral-900));
@@ -765,20 +766,10 @@ footer {
 	display: flex;
 	flex-direction: column;
 	gap: var(--spacing-24);
-
-	@media (min-width: 48rem) {
-		max-width: 33.75rem;
-		margin-inline: auto;
-	}
-
-	@media (min-width: 60rem) {
-		text-align: left;
-		margin-inline: unset;
-	}
 }
 
 .sign-up-section {
-	margin-block-start: var(--spacing-40);
+	margin-block: var(--spacing-40) var(--spacing-80);
 
 	& .launch-date {
 		margin-block-start: unset;
@@ -799,6 +790,32 @@ footer {
 
 	@media (min-width: 60rem) {
 		text-align: left;
+
+		& .date-content {
+			flex-direction: column;
+			align-items: start;
+		}
+	}
+}
+
+.sign-up-hero-section,
+.sign-up-section,
+.sign-up-form {
+	@media (min-width: 48rem) {
+		max-width: 33.75rem;
+		margin-inline: auto;
+	}
+
+	@media (min-width: 60rem) {
+		text-align: left;
+		margin-inline: unset;
+	}
+}
+
+.sign-up-section,
+.sign-up-form {
+	@media (min-width: 48rem) {
+		max-width: 28rem;
 	}
 }
 
@@ -810,17 +827,65 @@ footer {
 			'hero form'
 			'countdown form';
 		column-gap: var(--spacing-128);
+		align-self: center;
 
 		& .sign-up-hero-section {
 			grid-area: hero;
+			margin-block: unset;
 		}
 
 		& .sign-up-section {
 			grid-area: countdown;
+			margin-block: unset;
 		}
 
 		& .form-section {
 			grid-area: form;
+		}
+	}
+}
+
+.sign-up {
+	& footer {
+		margin-block-start: -14.75rem;
+		padding-block-start: 19.75rem;
+		/* nakijken waaarom hier de achtergrondafbeelding niet geladen wordt */
+
+		/* 48 */
+		@media (min-width: 35em) {
+			background-position-x: center;
+			background-position-y: 5%;
+			margin-block-start: -22rem;
+			padding-block-start: 29.5rem;
+		}
+
+		/* 60 */
+		@media (min-width: 60rem) {
+			margin-block-start: 0;
+			padding-block-start: 0;
+			position: absolute;
+			inset-block: 0;
+			inset-inline-end: 0;
+			width: 33vw;
+			z-index: -1;
+			background-image: url(./assets/sign-up/bg-pattern-side.svg);
+			background-size: 2036px;
+			background-position-x: 100%;
+			background-position-y: 40%;
+		}
+
+		& .launch-date {
+			text-align: center;
+			margin-block-end: var(--spacing-20);
+
+			@media (min-width: 53em) {
+				text-align: left;
+				margin-block-end: var(--spacing-12);
+			}
+		}
+
+		& .button {
+			margin-block-start: var(--spacing-48);
 		}
 	}
 }
