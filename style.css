@@ -63,8 +63,8 @@
 	--bg-select-hover: hsl(var(--clr-blue-300) / 20%);
 	--bg-select-checked: hsl(var(--clr-blue-300) / 30%);
 	--bg-muted: hsl(var(--clr-neutral-800));
-  --bg-blue: hsl(var(var(--clr-blue-300)));
-  --bg-blue-muted: hsl(var(--clr-blue-100));
+	--bg-blue: hsl(var(--clr-blue-300));
+	--bg-blue-muted: hsl(var(--clr-blue-100));
 
 	--footer-bg: hsl(var(--clr-neutral-900));
 	--footer-text: hsl(var(--clr-neutral-0));
@@ -398,111 +398,11 @@ h2,
 	}
 }
 
-.section {
-	margin-block-start: var(--spacing-80);
-}
-
-.sign-up-form {
-	background-color: var(--bg);
-	border-radius: var(--radius-12);
-	display: flex;
-	flex-direction: column;
-	gap: var(--spacing-24);
-	padding: var(--spacing-40) var(--spacing-20);
-	color: var(--text);
-
-	& .form-control {
-		padding: var(--spacing-16);
-		padding-block-start: 0;
-		border: 0;
-		border-bottom: 1px solid hsl(var(--clr-neutral-500));
-		width: 100%;
-	}
-
-	& ::placeholder {
-		opacity: 1;
-		color: var(--text);
-	}
-
-	& :focus:not(.custom-select, .custom-select *) {
-		outline: 1px solid currentColor;
-		outline-offset: 0.25lh;
-	}
-}
-
-/* Custom Select Using base-select */
-.custom-select,
-.custom-select::picker(select) {
-	appearance: base-select;
-	background-color: var(--bg);
-	border-radius: 0;
-	border: none;
-	position-area: block-end span-inline-end;
-
-	&::picker-icon {
-		color: hsl(var(--clr-blue-500));
-		transition: 0.4s rotate;
-		content: url(./assets/sign-up/icon-arrow-down.svg);
-	}
-
-	&:open::picker-icon {
-		rotate: 180deg;
-	}
-
-	& option {
-		font: var(--text-preset-5);
-
-		& span {
-			opacity: 0.4;
-		}
-		&:hover,
-		&:focus {
-			background-color: var(--bg-select-hover);
-		}
-		&:checked {
-			background-color: var(--bg-select-checked);
-		}
-		&::checkmark {
-			display: none;
-		}
-	}
-}
-
 /* ----------------  */
-/* Page Specific     */
+/* Shared            */
 /* ----------------  */
 
-.sign-up-hero-section {
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	gap: var(--spacing-24);
-}
-
-.sign-up-section {
-	margin-block-start: var(--spacing-40);
-
-	& .launch-date {
-		margin-block-start: unset;
-		color: var(--text-strong);
-		text-align: center;
-	}
-
-  & .countdown {
-    & p {
-      background-color: var(--bg-blue-muted);
-      color: var(--text-accent);
-
-      & span {
-        color: var(--text-strong);
-      }
-    }
-  }
-}
-
-/* ----------------  */
-/* Layout            */
-/* ----------------  */
+/* header, .logo, .button, footer, .countdown, .launch-date, .date-content */
 
 header {
 	padding-block-start: var(--spacing-block-start);
@@ -516,6 +416,110 @@ header {
 		}
 	}
 }
+
+.section {
+	margin-block-start: var(--spacing-80);
+}
+
+/* dit is de layout voor index */
+/* wat is het verschil met sign-up */
+.date-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-block-end: var(--spacing-112);
+
+	@media (min-width: 60rem) {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+/* @media (min-width: 48rem) and (max-width: 60rem) {
+	.date-content,
+	.sign-up-form {
+		max-width: 28rem;
+		margin-inline: auto;
+	}
+} */
+
+.launch-date {
+	font: var(--text-preset-5);
+	text-transform: uppercase;
+	letter-spacing: 5px;
+
+	& span {
+		color: var(--text-accent);
+	}
+}
+
+.countdown {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--spacing-16);
+	/* margin-block-end: var(--spacing-48); */
+
+	& p {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: var(--bg-muted);
+		padding: var(--spacing-16) var(--spacing-12);
+		border-radius: var(--radius-12);
+		font: var(--text-preset-1);
+
+		& span {
+			font: var(--text-preset-5);
+			opacity: 0.5;
+		}
+	}
+}
+
+@media (min-width: 35em) {
+	.countdown {
+		& p {
+			font-size: 3.5rem;
+		}
+	}
+}
+
+/* is deze margin-blovk voor sign-up?
+waarde geldt niet voor index. */ 
+@media (min-width: 45em) {
+	.launch-date {
+		margin-block-end: var(--spacing-16);
+	}
+
+	.countdown {
+		margin-block-end: unset;
+	}
+}
+
+footer {
+	background-color: var(--footer-bg);
+	color: var(--footer-text);
+	position: relative;
+	margin-block-start: -50rem;
+	padding-block-start: 55rem;
+	z-index: -5;
+
+	@media (min-width: 48rem) {
+		margin-block-start: -30rem;
+		padding-block-start: 36rem;
+	}
+
+	@media (min-width: 60rem) {
+		margin-block-start: -14.5rem;
+		padding-block-start: 19.5rem;
+	}
+}
+
+/* ----------------  */
+/* Index             */
+/* ----------------  */
+
+/* .hero-section, .cards-section, .card */
 
 .hero-section {
 	display: grid;
@@ -648,73 +652,175 @@ header {
 	}
 }
 
-footer {
-	margin-block-start: var(--spacing-80);
-	background-color: var(--footer-bg);
-	color: var(--footer-text);
+.home {
+	& footer {
+		background-image: url(./assets/home/bg-pattern-footer.svg);
+		background-size: cover;
+		background-repeat: no-repeat;
+
+		@media (min-width: 35em) {
+			background-size: 1454px;
+			background-position-x: center;
+			background-position-y: 5%;
+		}
+
+		@media (min-width: 53em) {
+			background-size: 2036px;
+			background-position-x: 100%;
+			background-position-y: 40%;
+		}
+
+		& .launch-date {
+			text-align: center;
+      margin-block-end: var(--spacing-20);
+
+			@media (min-width: 53em) {
+				text-align: left;
+        margin-block-end: var(--spacing-12);
+			}
+		}
+
+		& .button {
+			margin-block-start: var(--spacing-48);
+		}
+	}
 }
 
-.date-content {
+/* ----------------  */
+/* Sign Up           */
+/* ----------------  */
+
+/* .sign-up-hero-section, .sign-up-section, .sign-up-form, .sign-up-complete, .custom-select */
+
+.sign-up-form {
+	background-color: var(--bg);
+	border-radius: var(--radius-12);
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	padding-block-end: var(--spacing-112);
+	gap: var(--spacing-24);
+	margin-block-start: var(--spacing-80);
+	padding: var(--spacing-40) var(--spacing-20);
+	color: var(--text);
+	box-shadow: 0px 50px 50px -25px hsl(var(--clr-neutral-900));
 
-	@media (min-width: 45em) {
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-between;
+	& .form-control {
+		padding: var(--spacing-16);
+		padding-block-start: 0;
+		border: 0;
+		border-bottom: 1px solid hsl(var(--clr-neutral-500));
+		width: 100%;
+	}
+
+	& ::placeholder {
+		opacity: 1;
+		color: var(--text);
+	}
+
+	& :focus:not(.custom-select, .custom-select *) {
+		outline: 1px solid currentColor;
+		outline-offset: 0.25lh;
 	}
 }
 
-.launch-date {
-	font: var(--text-preset-5);
-	text-transform: uppercase;
-	letter-spacing: 5%;
-	margin-block-start: var(--spacing-96);
-	margin-block-end: var(--spacing-24);
+/* Custom Select Using base-select */
+.custom-select,
+.custom-select::picker(select) {
+	appearance: base-select;
+	background-color: var(--bg);
+	border-radius: 0;
+	border: none;
+	position-area: block-end span-inline-end;
 
-	& span {
-		color: var(--text-accent);
+	&::picker-icon {
+		color: hsl(var(--clr-blue-500));
+		transition: 0.4s rotate;
+		content: url(./assets/sign-up/icon-arrow-down.svg);
 	}
-}
 
-.countdown {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: var(--spacing-16);
-	margin-block-end: var(--spacing-48);
+	&:open::picker-icon {
+		rotate: 180deg;
+	}
 
-	& p {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		background-color: var(--bg-muted);
-		padding: var(--spacing-16) var(--spacing-12);
-		border-radius: var(--radius-12);
-		font: var(--text-preset-1);
+	& option {
+		font: var(--text-preset-5);
 
 		& span {
-			font: var(--text-preset-5);
-			opacity: 0.5;
+			opacity: 0.4;
+		}
+		&:hover,
+		&:focus {
+			background-color: var(--bg-select-hover);
+		}
+		&:checked {
+			background-color: var(--bg-select-checked);
+		}
+		&::checkmark {
+			display: none;
 		}
 	}
 }
 
-@media (min-width: 35em) {
-	.countdown {
+.sign-up-hero-section {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-24);
+
+	@media (min-width: 48rem) {
+		max-width: 33.75rem;
+		margin-inline: auto;
+	}
+
+	@media (min-width: 60rem) {
+		text-align: left;
+		margin-inline: unset;
+	}
+}
+
+.sign-up-section {
+	margin-block-start: var(--spacing-40);
+
+	& .launch-date {
+		margin-block-start: unset;
+		color: var(--text-strong);
+		text-align: center;
+	}
+
+	& .countdown {
 		& p {
-			font-size: 3.5rem;
+			background-color: var(--bg-blue-muted);
+			color: var(--text-accent);
+
+			& span {
+				color: var(--text-strong);
+			}
 		}
+	}
+
+	@media (min-width: 60rem) {
+		text-align: left;
 	}
 }
 
-@media (min-width: 45em) {
-	.launch-date {
-		margin-block-end: var(--spacing-16);
-	}
+.sign-up-complete {
+	@media (min-width: 60rem) {
+		display: grid;
+		grid-template-columns: repeat(2, auto);
+		grid-template-areas:
+			'hero form'
+			'countdown form';
+		column-gap: var(--spacing-128);
 
-	.countdown {
-		margin-block-end: unset;
+		& .sign-up-hero-section {
+			grid-area: hero;
+		}
+
+		& .sign-up-section {
+			grid-area: countdown;
+		}
+
+		& .form-section {
+			grid-area: form;
+		}
 	}
 }
