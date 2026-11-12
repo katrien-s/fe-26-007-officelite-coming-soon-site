@@ -503,7 +503,7 @@ waarde geldt niet voor index. */
 
 footer {
 	position: relative;
-	z-index: -5;
+	z-index: 0;
 	background-image: url(./assets/home/bg-pattern-footer.svg);
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -562,9 +562,12 @@ footer {
 }
 
 .cards-section {
+  position: relative;
+  z-index: 1;
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: var(--spacing-24);
+
 
 	@media (min-width: 53em) {
 		grid-template-columns: repeat(3, 1fr);
