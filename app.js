@@ -6,6 +6,12 @@ const month = today.getMonth();
 const day = today.getDate();
 const launchDate = new Date(year, month, day + 30);
 
+const oneDay = 24 * 60 * 60 * 1000;
+const oneHour = 60 * 60 * 1000;
+const oneMinute = 60 * 1000;
+const oneSecond = 1000;
+const countdownNumberEls = document.querySelectorAll('.countdown-number');
+
 const options = {
 	year: 'numeric',
 	month: 'short',
@@ -17,14 +23,9 @@ const launchDateText = new Intl.DateTimeFormat('en-GB', options).format(
 );
 launchDateEl.textContent = launchDateText;
 
-function getRemainingTime() {
+function updateRemainingTime() {
 	const now = new Date();
 	const remainingTime = launchDate - now;
-
-	const oneDay = 24 * 60 * 60 * 1000;
-	const oneHour = 60 * 60 * 1000;
-	const oneMinute = 60 * 1000;
-	const oneSecond = 1000;
 
 	const days = Math.floor(remainingTime / oneDay);
 	const hours = Math.floor((remainingTime % oneDay) / oneHour);
@@ -32,6 +33,12 @@ function getRemainingTime() {
 	const seconds = Math.floor((remainingTime % oneMinute) / oneSecond);
 
 	const values = [days, hours, minutes, seconds];
+
+	countdownNumberEls.forEach(function (countdownNumberEl, index) {
+		countdownNumberEl.textContent = values[index].toString().padStart(2, '0');
+	});
 }
 
-setInterval(getRemainingTime, 1000);
+updateRemainingTime();
+
+setInterval(updateRemainingTime, 1000);
