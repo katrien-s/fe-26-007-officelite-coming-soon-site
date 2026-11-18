@@ -16,3 +16,22 @@ const launchDateText = new Intl.DateTimeFormat('en-GB', options).format(
 	launchDate
 );
 launchDateEl.textContent = launchDateText;
+
+function getRemainingTime() {
+	const now = new Date();
+	const remainingTime = launchDate - now;
+
+	const oneDay = 24 * 60 * 60 * 1000;
+	const oneHour = 60 * 60 * 1000;
+	const oneMinute = 60 * 1000;
+	const oneSecond = 1000;
+
+	const days = Math.floor(remainingTime / oneDay);
+	const hours = Math.floor((remainingTime % oneDay) / oneHour);
+	const minutes = Math.floor((remainingTime % oneHour) / oneMinute);
+	const seconds = Math.floor((remainingTime % oneMinute) / oneSecond);
+
+	const values = [days, hours, minutes, seconds];
+}
+
+setInterval(getRemainingTime, 1000);
