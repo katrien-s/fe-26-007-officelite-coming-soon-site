@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="style.css" />
 
 		<title>Frontend Mentor | Officelite coming soon site</title>
+		<script src="app.js" defer></script>
 	</head>
 	<body class="home">
 		<header class="wrapper">
@@ -115,7 +116,9 @@
 			<div class="wrapper date-content">
 				<div>
 					<!-- If you're choosing to make this date dynamic, set it to 30 days in the future from the moment the visitor views the page -->
-					<p class="launch-date">Coming <span>4 Nov 2020</span></p>
+					<p class="launch-date">
+						Coming <span id="future-date">4 Nov 2020</span>
+					</p>
 					<!-- If you're choosing to make this timer dynamic, have it countdown from the date you set above -->
 					<div class="countdown">
 						<p id="countdown-day">47 <span>days</span></p>
