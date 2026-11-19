@@ -422,26 +422,21 @@ header {
 	margin-block-start: var(--spacing-80);
 }
 
+.launch-info {
+	width: 100%;
+	max-width: 28rem;
+}
+
 .date-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
-	/* date-content is anders op home dan op sign-up owille van de extra div */
 	@media (min-width: 60rem) {
 		flex-direction: row;
-		align-items: center;
 		justify-content: space-between;
 	}
 }
-
-/* @media (min-width: 48rem) and (max-width: 60rem) {
-	.date-content,
-	.sign-up-form {
-		max-width: 28rem;
-		margin-inline: auto;
-	}
-} */
 
 .launch-date {
 	font: var(--text-preset-5);
@@ -455,9 +450,8 @@ header {
 
 .countdown {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(4, minmax(min(65px, 100%), 1fr));
 	gap: var(--spacing-16);
-	/* margin-block-end: var(--spacing-48); */
 
 	& p {
 		display: flex;
@@ -483,14 +477,6 @@ header {
 		& .countdown-number {
 			font-size: 3.5rem;
 		}
-	}
-}
-
-/* is deze margin-blovk voor sign-up?
-waarde geldt niet voor index. */
-@media (min-width: 45em) {
-	.countdown {
-		margin-block-end: unset;
 	}
 }
 
@@ -779,7 +765,6 @@ body.sign-up {
 	& .launch-date {
 		margin-block-start: unset;
 		color: var(--text-strong);
-		text-align: center;
 	}
 
 	& .countdown {
@@ -798,11 +783,6 @@ body.sign-up {
 
 	@media (min-width: 60rem) {
 		text-align: left;
-
-		& .date-content {
-			flex-direction: column;
-			align-items: start;
-		}
 	}
 }
 

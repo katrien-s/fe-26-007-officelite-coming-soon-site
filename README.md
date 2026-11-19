@@ -67,7 +67,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### What I learned
 
-I used the 'new' `appearance: base-select` to work on the layout of the `select`-dropdown menu. Since it only works on a few browsers, I had to move to Chrome Canary (which has stopped updating on my Mac, since this machine has gotten old 🙃) for this set up. I didn't quite get the full visual translation of the design, and this feature also came with a lot of new information and implementations.
+- I used the 'new' `appearance: base-select` to work on the layout of the `select`-dropdown menu. Since it only works on a few browsers, I had to move to Chrome Canary (which has stopped updating on my Mac, since this machine has gotten old 🙃) for this set up. I didn't quite get the full visual translation of the design, and this feature also came with a lot of new information and implementations.
 
 ```css
 .custom-select,
@@ -92,15 +92,16 @@ I used the 'new' `appearance: base-select` to work on the layout of the `select`
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Handy CSS layout patterns, and fun ways to elevate them](https://youtu.be/R1kiLX-Z-Io?si=6MHbJHiJJg62sX7G) - I took from the chapter 'auto-grid and preventing overflow with it' inspiration for setting the width of a `grid-column` on `.countdown`
 
+```css
+.countdown {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(min(65px, 100%), 1fr));
+	gap: var(--spacing-16);
+```
 
 ### AI Collaboration
 
@@ -109,8 +110,6 @@ Describe how you used AI tools (if any) during this project. This helps demonstr
 - What tools did you use (e.g., ChatGPT, Claude, GitHub Copilot)?
 - How did you use them (e.g., debugging, generating boilerplate, brainstorming solutions)?
 - What worked well? What didn't?
-
-**Note: Delete this note and the content above if you didn't use AI, or replace with your own experience.**
 
 ## Author
 
