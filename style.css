@@ -158,14 +158,18 @@ img,
 iframe,
 audio,
 video,
-canvas {
+canvas,
+svg {
 	display: block;
 	max-inline-size: 100%;
-	block-size: auto;
 }
 
-svg {
-	max-inline-size: 100%;
+img,
+iframe,
+audio,
+video,
+canvas {
+	block-size: auto;
 }
 
 input,
@@ -248,6 +252,15 @@ picture {
 ul {
 	list-style: none;
 	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+:focus-visible {
+	outline: 2px solid hsl(var(--clr-blue-500));
+	outline-offset: 4px;
 }
 
 body {
@@ -368,11 +381,6 @@ h2,
 		background-color: var(--btn-primary-bg-hover);
 	}
 
-	&:focus-within {
-		outline: 2px solid hsl(var(--clr-blue-500));
-		outline-offset: 4px;
-	}
-
 	&.secondary {
 		background-color: var(--btn-secondary-bg);
 		color: var(--btn-secondary-text);
@@ -390,7 +398,7 @@ h2,
 				background-color: var(--btn-secondary-on-dark-bg-hover);
 			}
 
-			&:focus-within {
+			&:focus-visible {
 				background-color: var(--btn-secondary-on-dark-bg);
 				outline-color: var(--btn-secondary-on-dark-outline);
 			}
@@ -410,7 +418,7 @@ header {
 
 	& .logo {
 		margin-inline: auto;
-		/* staat het logo eignelijk wel goed? is de wrapper correct op tablet-size */
+		border-radius: var(--radius-full);
 
 		@media (min-width: 35em) {
 			margin-inline: 0;
